@@ -28,7 +28,7 @@ public class MessageController {
 
     @PostMapping
     public ResponseEntity<String> send(@RequestBody Map<String, String> body) {
-        String payload = body.getOrDefault("msg", "hello");
+        String payload = body.getOrDefault("msg", "DEFAULT HELLO!");
         rabbitTemplate.convertAndSend(EXCHANGE, ROUTING_KEY, payload);
 
         return ResponseEntity.ok("sent");
